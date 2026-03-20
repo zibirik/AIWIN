@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jarvis-ai-core"
+version = "0.1.0"
+description = "Python ИИ-ядро JARVIS для Windows"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic>=2",
+    "opencv-python",
+    "pytesseract",
+    "faster-whisper",
+    "transformers",
+    "requests",
+    "httpx",
+    "grpcio",
+    "grpcio-tools",
+    "protobuf",
+    "aiosqlite",
+    "python-dotenv",
+    "pyyaml",
+    "sounddevice",
+    "numpy",
+    "pyttsx3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "ruff",
+    "mypy",
+]
+
+

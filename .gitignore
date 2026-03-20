@@ -1,0 +1,52 @@
+# Python
+.venv/
+venv/
+env/
+**/.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+coverage.xml
+htmlcov/
+
+# Rust
+rust_core/target/
+**/*.rs.bk
+
+# Env и секреты
+.env
+.env.*
+!.env.example
+*.pem
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Логи и локальные данные
+*.log
+*.sqlite
+*.db
+
+# Hugging Face / кэш моделей (если когда-нибудь положат в проект)
+models/
+.cache/
+
+# Прочее
+*.bak
+*.tmp

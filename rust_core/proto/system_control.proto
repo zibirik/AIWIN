@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package jarvis.system.v1;
+
+option csharp_namespace = "Jarvis.System.V1";
+
+message AuthToken {
+  string token = 1;
+}
+
+message CommandResult {
+  bool success = 1;
+  string error_message = 2;
+}
+
+message Empty {}
+
+message SystemStatus {
+  double cpu_usage = 1;
+  double memory_usage = 2;
+  double battery_level = 3;
+}
+
+message GetSystemStatusRequest {
+  AuthToken auth = 1;
+}
+
+message LaunchApplicationRequest {
+  AuthToken auth = 1;
+  string path = 2;
+  repeated string args = 3;
+  string working_dir = 4;
+}
+
+message CaptureScreenRequest {
+  AuthToken auth = 1;
+}
+
+message CaptureScreenResponse {
+  bytes image_png = 1;
+}
+
+message SimulateKeyRequest {
+  AuthToken auth = 1;
+  string text = 2;
+}
+
+message MoveMouseRequest {
+  AuthToken auth = 1;
+  int32 x = 2;
+  int32 y = 3;
+}
+
+message ClickMouseRequest {
+  AuthToken auth = 1;
+  int32 x = 2;
+  int32 y = 3;
+  string button = 4;
+}
+
+message ReadClipboardRequest {
+  AuthToken auth = 1;
+}
+
+message ReadClipboardResponse {
+  string text = 1;
+}
+
+message SetClipboardRequest {
+  AuthToken auth = 1;
+  string text = 2;
+}
+
+service SystemControlService {
+  rpc GetSystemStatus(GetSystemStatusRequest) returns (SystemStatus);
+  rpc LaunchApplication(LaunchApplicationRequest) returns (CommandResult);
+  rpc CaptureScreen(CaptureScreenRequest) returns (CaptureScreenResponse);
+  rpc SimulateKey(SimulateKeyRequest) returns (CommandResult);
+  rpc MoveMouse(MoveMouseRequest) returns (CommandResult);
+  rpc ClickMouse(ClickMouseRequest) returns (CommandResult);
+  rpc ReadClipboard(ReadClipboardRequest) returns (ReadClipboardResponse);
+  rpc SetClipboard(SetClipboardRequest) returns (CommandResult);
+}
+
